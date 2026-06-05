@@ -1,0 +1,50 @@
+/**
+ * Sigma Operator — Content CSS
+ * Sub-etapa 3.4 — Apenas estilos do indicador de debug
+ *
+ * Toda a ocultação de cards e estilo do modo override é injetada
+ * dinamicamente pelo content.js via tag <style> com ID único.
+ * Isso permite reagir em tempo real sem reload da página.
+ */
+
+#sigma-operator-dev-indicator {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  padding: 8px 14px;
+  background: #FFFFFF;
+  color: #575757;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid #E5E5E5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.1px;
+}
+
+/* ===================================================== */
+/* Badge Σ — modo override (cards visíveis + identificação) */
+/* ===================================================== */
+.sigma-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  color: #F54927;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  z-index: 999;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Ancora o badge ao container do card */
+.occurrence-card-container.sigma-badged {
+  position: relative;
+}

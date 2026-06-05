@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Configurações — Sigma Operator</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============================================== -->
+    <!-- HEADER -->
+    <!-- ============================================== -->
+    <header class="page-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <span class="sigma">Σ</span>
+        </div>
+        <div class="brand-text">
+          <h1 id="brand-title">Sigma Operator</h1>
+          <div class="brand-subtitle" id="brand-subtitle">Configurações da extensão</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- AVISO: credenciais não configuradas (oculto por padrão) -->
+    <!-- ============================================== -->
+    <section class="card card-warning" id="card-credenciais" hidden>
+      <div class="card-header">
+        <span class="warning-icon">!</span>
+        <h2>Credenciais não configuradas</h2>
+      </div>
+      <p>As credenciais do Supabase não foram preenchidas no arquivo <code>lib/config.js</code> da extensão.</p>
+      <p>Abra esse arquivo no editor de código, substitua os valores <code>COLE_AQUI_...</code> pela URL e Anon Key do seu projeto Supabase e recarregue a extensão em <code>chrome://extensions/</code>.</p>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SEÇÃO 1: LICENÇA E ATIVAÇÃO -->
+    <!-- ============================================== -->
+    <section class="card" id="card-licenca">
+      <div class="card-header">
+        <h2>Licença e ativação</h2>
+        <span class="badge badge-status" id="badge-licenca">Não ativada</span>
+      </div>
+
+      <!-- Estado: NÃO ativada -->
+      <div id="licenca-form">
+        <p class="card-desc">Cole a chave de ativação fornecida pela Team Everest para vincular esta extensão ao seu cliente.</p>
+
+        <div class="form-row">
+          <input
+            type="text"
+            id="input-chave"
+            class="input-text"
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="19">
+          <button type="button" id="btn-ativar" class="btn-primary">Validar e ativar</button>
+        </div>
+
+        <div class="form-message" id="mensagem-licenca" hidden></div>
+      </div>
+
+      <!-- Estado: ATIVADA -->
+      <div id="licenca-ativa" hidden>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Cliente vinculado</div>
+            <div class="info-value" id="info-cliente">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">ID de monitoramento</div>
+            <div class="info-value" id="info-monitoramento">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Chave de ativação</div>
+            <div class="info-value" id="info-chave">—</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Ativada em</div>
+            <div class="info-value" id="info-ativada-em">—</div>
+          </div>
+        </div>
+
+        <div class="form-row form-row-end">
+          <button type="button" id="btn-desativar" class="btn-secondary">Desativar licença</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SEÇÃO 2: COMPORTAMENTO -->
+    <!-- ============================================== -->
+    <section class="card" id="card-comportamento">
+      <div class="card-header">
+        <h2>Comportamento</h2>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Ocultar eventos do bot</div>
+          <div class="toggle-subtitle">Esconde cards do Sigma Cloud que estão sendo tratados pelo Sigma Operator.</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-ocultar" data-key="ocultarCards">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Mostrar contador de ocultos</div>
+          <div class="toggle-subtitle">Exibe o número de cards ocultos no formato <code>1 (2)</code> nas colunas.</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-contadores" data-key="mostrarContadores">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Iniciar com proteção ativa</div>
+          <div class="toggle-subtitle">Ao abrir o Sigma Cloud, a ocultação já começa ligada automaticamente.</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-iniciar" data-key="iniciarAtivo">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SEÇÃO 3: CONEXÃO -->
+    <!-- ============================================== -->
+    <section class="card" id="card-conexao">
+      <div class="card-header">
+        <h2>Conexão</h2>
+        <span class="badge badge-conexao" id="badge-conexao">Aguardando</span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">URL do Supabase</div>
+          <div class="info-value info-mono" id="info-url">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Latência (REST)</div>
+          <div class="info-value" id="info-latencia">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Última verificação</div>
+          <div class="info-value" id="info-ultima-verificacao">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Modo Realtime</div>
+          <div class="info-value" id="info-realtime-status">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Eventos processados</div>
+          <div class="info-value" id="info-eventos-processados">0</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">IDs ocultos no momento</div>
+          <div class="info-value" id="info-ids-ocultos">0</div>
+        </div>
+      </div>
+
+      <div class="form-row form-row-end form-row-gap">
+        <button type="button" id="btn-testar-conexao" class="btn-secondary">Testar conexão (REST)</button>
+        <button type="button" id="btn-reconectar" class="btn-primary">Reconectar Realtime</button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SEÇÃO 4: DIAGNÓSTICO -->
+    <!-- ============================================== -->
+    <section class="card" id="card-diagnostico">
+      <div class="card-header">
+        <h2>Diagnóstico</h2>
+      </div>
+
+      <p class="card-desc">Exporta um relatório completo em JSON com a configuração atual, logs de debug e estado dos toggles. Útil para enviar ao suporte da Team Everest.</p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Versão da extensão</div>
+          <div class="info-value">1.0.0 (Sub-etapa 3.4)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">ID da extensão</div>
+          <div class="info-value info-mono" id="info-extension-id">—</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Eventos no log de debug</div>
+          <div class="info-value" id="info-eventos-log">0</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Última atualização do log</div>
+          <div class="info-value" id="info-log-atualizado">—</div>
+        </div>
+      </div>
+
+      <div class="form-row form-row-end form-row-gap">
+        <button type="button" id="btn-limpar-logs" class="btn-secondary">Limpar logs</button>
+        <button type="button" id="btn-exportar" class="btn-primary">Exportar logs (JSON)</button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- FOOTER -->
+    <!-- ============================================== -->
+    <footer class="page-footer">
+      Sigma Operator · Versão 1.0.0 · Team Everest · teameverest.com.br
+    </footer>
+
+  </div>
+
+  <!-- Toast (notificação flutuante) -->
+  <div id="toast" class="toast" hidden>
+    <span class="toast-icon" id="toast-icon"></span>
+    <span class="toast-message" id="toast-message"></span>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

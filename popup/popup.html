@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sigma Operator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <span class="sigma">Σ</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Sigma <span class="brand-name-light">Operator</span></div>
+          <div class="brand-subtitle" id="brand-subtitle">Não ativada</div>
+        </div>
+      </div>
+      <button class="icon-btn" id="btn-options" title="Abrir configurações" aria-label="Configurações">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 5v-2 M12 21v-2 M19 12h2 M3 12h2 M16.95 7.05l1.41-1.41 M5.64 18.36l1.41-1.41 M16.95 16.95l1.41 1.41 M5.64 5.64l1.41 1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- ESTADO 1: SEM LICENÇA -->
+    <section id="sem-licenca" hidden>
+      <div class="empty-state">
+        <div class="empty-icon">Σ</div>
+        <div class="empty-title">Configure sua licença</div>
+        <div class="empty-text">Para começar a usar a extensão, valide sua chave de ativação na página de configurações.</div>
+        <button class="btn-primary" id="btn-configurar">Configurar licença</button>
+      </div>
+    </section>
+
+    <!-- ESTADO 2: COM LICENÇA -->
+    <section id="com-licenca" hidden>
+      <!-- STATUS BADGE -->
+      <div class="status-badge">
+        <div class="status-dot" id="status-dot"></div>
+        <div class="status-text">
+          <div class="status-title" id="status-title">Pronto para uso</div>
+          <div class="status-subtitle" id="status-subtitle">Aguardando conexão</div>
+        </div>
+      </div>
+
+      <!-- TOGGLE -->
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Ocultar eventos do bot</div>
+          <div class="toggle-subtitle" id="toggle-subtitle">Esconde cards sendo tratados pela automação</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-ocultar">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- LISTA DE EVENTOS OCULTOS -->
+      <div class="ocultos-section" id="ocultos-section">
+        <div class="ocultos-header">
+          <span class="ocultos-title">Eventos sendo tratados pelo bot</span>
+          <span class="ocultos-count" id="ocultos-count">0</span>
+        </div>
+        <ul class="ocultos-list" id="ocultos-list">
+          <!-- preenchido dinamicamente -->
+        </ul>
+        <div class="ocultos-mais" id="ocultos-mais" hidden></div>
+        <div class="ocultos-empty" id="ocultos-empty" hidden>
+          Nenhum evento sendo tratado no momento.
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- INFO DO CLIENTE -->
+      <div class="info-section">
+        <div class="info-row">
+          <span class="info-label">Cliente</span>
+          <span class="info-value" id="info-cliente">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">ID de monitoramento</span>
+          <span class="info-value" id="info-monitoramento">—</span>
+        </div>
+        <div class="info-row info-row-vendor">
+          <span class="vendor-tag">by Team Everest</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <button class="btn-secondary" id="btn-open-options">Abrir configurações</button>
+    </footer>
+
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

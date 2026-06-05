@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  update.xml — Sigma Operator Extension
+  
+  Este arquivo fica hospedado em URL FIXA no branch main do repositório:
+  https://raw.githubusercontent.com/Gustavo-guibo/sigma-operator/main/releases/update.xml
+  
+  A cada nova versão:
+    1. Atualizar "codebase" com a URL do novo .crx na Release do GitHub
+    2. Atualizar "version" com o novo número de versão
+    3. Commit e push — o Chrome dos operadores detecta a atualização em até 5h
+-->
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='ebompnbhkfmbcjhmddjkfghjgckjplbm'>
+    <updatecheck
+      codebase='https://github.com/Gustavo-guibo/sigma-operator/releases/download/v1.1.0/sigma-operator-extension-v1.1.0.crx'
+      version='1.1.0' />
+  </app>
+</gupdate>

@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Sigma Operator",
+  "version": "1.1.0",
+  "description": "Oculta automaticamente cards do Sigma Cloud que estão sendo tratados pelo Sigma Operator.",
+  "author": "Team Everest",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Sigma Operator",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://cloud.segware.com.br/*"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://cloud.segware.com.br/*",
+    "https://*.supabase.co/*"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0bR8miaI3YJcGxgF9tSkK8hjiuuzXYLxHSw3o/haDsKnv8U4uZVtZAAWMm3meIkcSzO7cC1dnA1Mr/rlAuIXsq0DlOTo8TetSQ02lZ3mMoe5KXUdE+JNX9y4FBDa+GjW+Kqc4O67HzqWlItyNdH8sTbZKtBrbMhmgQQ2vrFZhLxsWrYmcxOeG6dsLoK+gELEsZFLfqLpriq6Gc8FGFzmUZjWE0I5FpYwHPfJQHIy7LHo0FSHa+29M+qJh65y+MxiDaHcW2ppsxdJal7nI4zWzlVGMxa7Zv2ZcoifLKub2MKO0R3VCkVApWMYsPqGr4V41pZeu8vY8Ydgn1l2mJ7aUwIDAQAB"
+}

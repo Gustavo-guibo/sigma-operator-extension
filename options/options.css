@@ -1,0 +1,449 @@
+/**
+ * Sigma Operator — Options CSS
+ * Identidade visual: Team Everest
+ * Sub-etapa 3.2 — Página de opções funcional
+ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #575757;
+  background: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12.5px;
+  background: #F0F0F0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #575757;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ========== HEADER ========== */
+.page-header {
+  margin-bottom: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #FEEBE7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sigma {
+  font-family: 'Times New Roman', 'DejaVu Serif', Georgia, serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #F54927;
+  line-height: 1;
+  margin-top: -3px;
+}
+
+.brand-text h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #575757;
+  letter-spacing: -0.4px;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: #888888;
+  margin-top: 3px;
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid #EEEEEE;
+}
+
+.card-warning {
+  border-color: #F54927;
+  background: #FEEBE7;
+}
+
+.card-warning .card-header h2 {
+  color: #F54927;
+}
+
+.warning-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F54927;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.card-header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-header h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #575757;
+  letter-spacing: -0.2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-desc {
+  font-size: 13.5px;
+  color: #888888;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.card-warning p {
+  font-size: 13.5px;
+  color: #575757;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.card-warning p:last-child { margin-bottom: 0; }
+
+/* ========== BADGES ========== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #F0F0F0;
+  color: #888888;
+  white-space: nowrap;
+}
+
+.badge-status.is-active,
+.badge-conexao.is-active {
+  background: #E6F5E9;
+  color: #2E8B43;
+}
+
+.badge-status.is-error,
+.badge-conexao.is-error {
+  background: #FEEBE7;
+  color: #F54927;
+}
+
+.badge-status.is-pending,
+.badge-conexao.is-pending {
+  background: #FFF7E0;
+  color: #B07A00;
+}
+
+/* ========== FORM ELEMENTS ========== */
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.form-row-end {
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.form-row-gap {
+  gap: 12px;
+}
+
+.input-text {
+  flex: 1;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #575757;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-text:focus {
+  outline: none;
+  border-color: #F54927;
+  box-shadow: 0 0 0 3px rgba(245, 73, 39, 0.15);
+}
+
+.input-text::placeholder {
+  color: #BBBBBB;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  padding: 0 18px;
+  height: 40px;
+  background: #F54927;
+  color: #FFFFFF;
+  border: 1px solid #F54927;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #E13F1F;
+  border-color: #E13F1F;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: #BBBBBB;
+  border-color: #BBBBBB;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 0 18px;
+  height: 40px;
+  background: #FFFFFF;
+  color: #F54927;
+  border: 1px solid #F54927;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: #FEEBE7;
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* ========== FORM MESSAGE ========== */
+.form-message {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-message.is-error {
+  background: #FEEBE7;
+  color: #C13818;
+  border: 1px solid rgba(245, 73, 39, 0.25);
+}
+
+.form-message.is-success {
+  background: #E6F5E9;
+  color: #2E8B43;
+  border: 1px solid rgba(46, 139, 67, 0.25);
+}
+
+.form-message.is-info {
+  background: #FFF7E0;
+  color: #8B6C00;
+  border: 1px solid rgba(176, 122, 0, 0.25);
+}
+
+/* ========== INFO GRID ========== */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+.info-item {
+  min-width: 0;
+}
+
+.info-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #AAAAAA;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-size: 13.5px;
+  color: #575757;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.info-mono {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+}
+
+/* ========== TOGGLE ROW ========== */
+.toggle-row {
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid #F0F0F0;
+}
+
+.toggle-row:first-of-type {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.toggle-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.toggle-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #575757;
+  margin-bottom: 4px;
+}
+
+.toggle-subtitle {
+  font-size: 12.5px;
+  color: #888888;
+  line-height: 1.5;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #DDDDDD;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.switch input:checked + .slider {
+  background: #F54927;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.switch input:disabled + .slider {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ========== FOOTER ========== */
+.page-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #AAAAAA;
+  margin-top: 32px;
+  padding-top: 24px;
+}
+
+/* ========== TOAST (notificação flutuante) ========== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: #FFFFFF;
+  color: #575757;
+  border-radius: 10px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-size: 13.5px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.is-success { border-color: #C0E4C9; background: #E6F5E9; color: #2E8B43; }
+.toast.is-error { border-color: #F5C4B3; background: #FEEBE7; color: #C13818; }
+.toast.is-info { border-color: #F0D9A0; background: #FFF7E0; color: #8B6C00; }
