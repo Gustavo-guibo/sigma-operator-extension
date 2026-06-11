@@ -157,7 +157,7 @@ async function atualizarListaOcultos() {
     }
   } catch (e) {
     // Fallback: mostra só os IDs se o service worker não responder
-    detalhes = idsVisiveis.map(id => ({ idOccurrence: id, nomeCliente: id.slice(0, 12) + '...', idEmpresa: '—' }));
+    detalhes = idsVisiveis.map(id => ({ idOccurrence: id, nomeCliente: id.slice(0, 12) + '...', accountClient: '—' }));
   }
 
   // Renderiza cada item
@@ -171,7 +171,7 @@ async function atualizarListaOcultos() {
 
     const empresa = document.createElement('span');
     empresa.className = 'ocultos-empresa';
-    empresa.textContent = item.idEmpresa || '—';
+    empresa.textContent = item.accountClient || '—';
 
     li.appendChild(nome);
     li.appendChild(empresa);
