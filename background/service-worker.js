@@ -169,7 +169,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           break;
 
         case 'get-detalhes-ocultos': {
-          // Retorna detalhes (nomeCliente + idEmpresa) dos IDs solicitados
+          // Retorna detalhes (nomeCliente + accountClient) dos IDs solicitados
           // Usado pelo popup para renderizar a lista de eventos ocultos
           const idsSolicitados = message.ids || [];
           const { detalhesOcultos = {} } = await lerLocal([LOCAL_KEYS.DETALHES_OCULTOS]);
@@ -178,7 +178,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             return {
               idOccurrence: id,
               nomeCliente: det.nomeCliente || '—',
-              idEmpresa: det.idEmpresa || '—'
+              accountClient: det.accountClient || '—'
             };
           });
           sendResponse({ ok: true, detalhes });
