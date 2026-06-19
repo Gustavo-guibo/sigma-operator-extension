@@ -12,7 +12,7 @@
 
   const STYLE_TAG_ID    = 'sigma-operator-style';
   const DEV_INDICATOR_ID = 'sigma-operator-dev-indicator';
-  const DEBOUNCE_MS     = 250;
+  const DEBOUNCE_MS     = 150;
   const FORMATO_REGEX   = /^(\d+)\s*\(\d+\)$/;
   const NUMERO_REGEX    = /^\d+$/;
 
@@ -284,36 +284,56 @@
   // MUTATIONOBSERVER
   // =====================================================
 
-  let debounce = null;
-  function agendarReaplicacao() {
-    if (debounce) clearTimeout(debounce);
-    debounce = setTimeout(() => {
-      debounce = null;
-      if (!document.getElementById(STYLE_TAG_ID)) aplicarEstilo();
-      if (mostrarContadores) recalcularContadores();
-      aplicarBadgesComEstado();
-    }, DEBOUNCE_MS);
+  function debounce(fn, ms) {
+    let timer = null;
+    return function(...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => { timer = null; fn.apply(this, args); }, ms);
+    };
+  }
+
+  function reaplicarVisual() {
+    if (!document.getElementById(STYLE_TAG_ID)) aplicarEstilo();
+    if (mostrarContadores) recalcularContadores();
+    aplicarBadgesComEstado();
   }
 
   function iniciarObserver() {
     if (!document.body) { setTimeout(iniciarObserver, 100); return; }
 
-    new MutationObserver(mutations => {
-      for (const m of mutations) {
-        if (m.type === 'childList' && (m.addedNodes.length || m.removedNodes.length)) {
-          agendarReaplicacao(); return;
-        }
-        if (m.type === 'characterData') {
-          agendarReaplicacao(); return;
-        }
-      }
-    }).observe(document.body, {
+    const observer = new MutationObserver(debounce(() => {
+      reaplicarVisual();
+    }, DEBOUNCE_MS));
+
+    observer.observe(document.body, {
       childList: true,
       subtree: true,
-      characterData: true
+      attributes: false,
+      characterData: false
     });
 
     console.log('[Sigma Operator] MutationObserver iniciado');
+  }
+
+  // =====================================================
+  // DETECÇÃO DE NAVEGAÇÃO INTERNA
+  // =====================================================
+
+  function iniciarDeteccaoNavegacao() {
+    // O MutationObserver já cobre os re-renders do React após cliques.
+    // Aqui tratamos apenas a navegação SPA (pushState/replaceState/popstate),
+    // que pode trocar a tela sem disparar uma rajada de mutações no body.
+    const patch = (metodo) => {
+      const original = history[metodo].bind(history);
+      history[metodo] = function (...args) {
+        original(...args);
+        setTimeout(reaplicarVisual, 300);
+      };
+    };
+    patch('pushState');
+    patch('replaceState');
+
+    window.addEventListener('popstate', () => setTimeout(reaplicarVisual, 300));
   }
 
   // =====================================================
@@ -367,5 +387,6 @@
   aplicarEstilo();
   carregarEstado();
   iniciarObserver();
+  iniciarDeteccaoNavegacao();
 
 })();
