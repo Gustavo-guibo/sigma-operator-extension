@@ -13,7 +13,7 @@
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='ebompnbhkfmbcjhmddjkfghjgckjplbm'>
     <updatecheck
-      codebase='https://github.com/Gustavo-guibo/sigma-operator-extension/releases/download/v1.1.0/sigma-operator-extension-v1.1.0.crx'
-      version='1.1.0' />
+      codebase='https://github.com/Gustavo-guibo/sigma-operator-extension/releases/download/v1.2.0/sigma-operator-extension-v1.2.0.crx'
+      version='1.2.0' />
   </app>
 </gupdate>
